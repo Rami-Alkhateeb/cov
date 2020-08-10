@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>lists</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let re of results">
+    <ion-item>
+      رقم الموبايل : {{re.Number}}
+      المدينة :{{re.City}}
+      المنطقة : {{re.Area}}
+      العمر : {{re.Age}}
+      الحالة : {{re.Status}}
+    </ion-item>
+  </ion-list>
+
+  <ion-button ion-button primary href="/" >الرئيسية</ion-button>
+
+</ion-content>

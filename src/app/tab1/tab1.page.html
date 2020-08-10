@@ -1,17 +1,81 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      تسجيل طلب على اسطوانة اوكسجين
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <app-explore-container name="Tab 1 page"></app-explore-container> -->
+  <ion-card >
+    <ion-card-header>
+       <ion-card-subtitle>سجل طلبك في حال رغبتك</ion-card-subtitle>
+      <ion-card-title>يرجى تعئبة البيانات التالية</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">رقم الموبايل</ion-label>
+          <ion-input [(ngModel)]="phone" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">المحافظة</ion-label>
+          <ion-select [(ngModel)]="city" placeholder="اختر محافظتك">
+            <ion-select-option value="RDamascus">ريف دمشق</ion-select-option>
+            <ion-select-option value="Damascus">دمشق</ion-select-option>
+            <ion-select-option value="Homs">حمص</ion-select-option>
+            <ion-select-option value="Aleepo">حلب</ion-select-option>
+            <ion-select-option value="Hama">حماه</ion-select-option>
+            <ion-select-option value="Tartus">طرطوس</ion-select-option>
+            <ion-select-option value="Latakia">اللاذقية</ion-select-option>
+            <ion-select-option value="Daraa">درعا</ion-select-option>
+            <ion-select-option value="DirZor">دير الزور</ion-select-option>
+            <ion-select-option value="Reqa">الرقة</ion-select-option>
+            <ion-select-option value="Idleb">ادلب</ion-select-option>
+            <ion-select-option value="Sweda">السويداء</ion-select-option>
+            <ion-select-option value="kunetra">القنيطرة</ion-select-option>
+            <ion-select-option value="Hasaka">الحسكة</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">المنطقة / الحارة</ion-label>
+          <ion-input [(ngModel)]="area" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">العمر</ion-label>
+          <ion-input [(ngModel)]="age" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">حالة المريض</ion-label>
+          <ion-select [(ngModel)]="status" placeholder="درجة الخطورة">
+            <ion-select-option value="critical">حرجة</ion-select-option>
+            <ion-select-option value="normal">اعراض وصعوبة تنفس</ion-select-option>
+            <ion-select-option value="normal">لا يوجد اعراض</ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+      </ion-list>
+      <ion-grid>
+        <ion-row class="ion-align-items-center">
+          <ion-col class="ion-text-center">
+            <ion-button ion-button primary (click)="send()" >ارسال</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col class="ion-text-center">
+  <ion-button ion-button primary href="/tabs/tab3" >لائحة الاسطوانات المتوفر</ion-button>
+       </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

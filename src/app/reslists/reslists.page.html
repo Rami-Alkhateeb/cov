@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>reslists</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let re of results">
+    <ion-item>
+      رقم الموبايل : {{re.Number}}
+      المدينة :{{re.City}}
+      المنطقة : {{re.Area}}
+      العدد : {{re.Count}}
+      
+    </ion-item>
+  </ion-list>
+</ion-content>

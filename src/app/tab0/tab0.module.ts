@@ -1,13 +1,11 @@
 import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Tab3Page } from './tab3.page';
+import { Tab0Page } from './tab0.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
-import { Tab3PageRoutingModule } from './tab3-routing.module'
+import { Tab0PageRoutingModule } from './tab0-routing.module';
 
 @NgModule({
   imports: [
@@ -15,10 +13,8 @@ import { Tab3PageRoutingModule } from './tab3-routing.module'
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Ng2SearchPipeModule,
-    RouterModule.forChild([{ path: '', component: Tab3Page }]),
-    Tab3PageRoutingModule,
+    Tab0PageRoutingModule
   ],
-  declarations: [Tab3Page]
+  declarations: [Tab0Page]
 })
-export class Tab3PageModule {}
+export class Tab0PageModule {}

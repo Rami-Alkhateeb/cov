@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Tab 2
@@ -14,4 +14,69 @@
   </ion-header>
 
   <app-explore-container name="Tab 2 page"></app-explore-container>
+</ion-content> -->
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      تسجيل منفسة واوكسجين
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card >
+    <ion-card-header>
+       <ion-card-subtitle>سجل ما لديك من اسطوانات</ion-card-subtitle>
+      <ion-card-title>يرجى تعئبة البيانات التالية</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">رقم الموبايل</ion-label>
+          <ion-input [(ngModel)]="phone" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">المحافظة</ion-label>
+          <ion-select [(ngModel)]="city" placeholder="اختر محافظتك">
+            <ion-select-option value="RDamascus">ريف دمشق</ion-select-option>
+            <ion-select-option value="Damascus">دمشق</ion-select-option>
+            <ion-select-option value="Homs">حمص</ion-select-option>
+            <ion-select-option value="Aleepo">حلب</ion-select-option>
+            <ion-select-option value="Hama">حماه</ion-select-option>
+            <ion-select-option value="Tartus">طرطوس</ion-select-option>
+            <ion-select-option value="Latakia">اللاذقية</ion-select-option>
+            <ion-select-option value="Daraa">درعا</ion-select-option>
+            <ion-select-option value="DirZor">دير الزور</ion-select-option>
+            <ion-select-option value="Reqa">الرقة</ion-select-option>
+            <ion-select-option value="Idleb">ادلب</ion-select-option>
+            <ion-select-option value="Sweda">السويداء</ion-select-option>
+            <ion-select-option value="kunetra">القنيطرة</ion-select-option>
+            <ion-select-option value="Hasaka">الحسكة</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">المنطقة / الحارة</ion-label>
+          <ion-input [(ngModel)]="area" type="text"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label position="floating">عدد الاسطوانات المتوفرة لديك</ion-label>
+          <ion-input [(ngModel)]="count" type="number"></ion-input>
+        </ion-item>
+        
+        
+      </ion-list>
+      <ion-grid>
+        <ion-row class="ion-align-items-center">
+          <ion-col class="ion-text-center">
+            <ion-button ion-button primary (click)="send()" >ارسال</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <!-- <ion-button ion-button primary href="/reslists" >لائحة الاسطوانات المطلوبة</ion-button> -->
+  <!-- <ion-button ion-button primary (click)="send()">لائحة الاسطوانات المطلوبة</ion-button> -->
 </ion-content>
+
