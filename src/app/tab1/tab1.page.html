@@ -7,27 +7,28 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container> -->
-  <ion-card >
+  <ion-card>
     <ion-card-header>
-       <ion-card-subtitle>سجل طلبك في حال رغبتك</ion-card-subtitle>
+      <ion-card-subtitle>سجل طلبك في حال رغبتك</ion-card-subtitle>
       <ion-card-title>يرجى تعئبة البيانات التالية</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-list>
-        <ion-item>
+
+      <form #tosend="ngForm" (ngSubmit)="send()">
+        <ion-item class="form-group">
           <ion-label position="floating">رقم الموبايل</ion-label>
-          <ion-input [(ngModel)]="phone" type="text"></ion-input>
+          <ion-input [(ngModel)]="phone" class="form-control" required minlength="9"
+          name="phoneNumber" pattern="[0-9]+" #phoneNumber="ngModel" id="phoneNumber" type="text"></ion-input>
         </ion-item>
-        <ion-item>
+       
+        <span class="alert alert-danger" [hidden]="phoneNumber.valid || phoneNumber.pristine">
+          الرجاء ادخال رقم الهاتف - 9 ارقام على الاقل
+        </span>
+     
+        <ion-item class="form-group">
           <ion-label position="floating">المحافظة</ion-label>
-          <ion-select [(ngModel)]="city" placeholder="اختر محافظتك">
+          <ion-select class="form-control" required 
+          name="cityName" #cityName="ngModel" id="cityName" [(ngModel)]="city" placeholder="اختر محافظتك">
             <ion-select-option value="RDamascus">ريف دمشق</ion-select-option>
             <ion-select-option value="Damascus">دمشق</ion-select-option>
             <ion-select-option value="Homs">حمص</ion-select-option>
@@ -44,38 +45,52 @@
             <ion-select-option value="Hasaka">الحسكة</ion-select-option>
           </ion-select>
         </ion-item>
-        <ion-item>
+        <span class="alert alert-danger" [hidden]="cityName.valid || cityName.pristine">
+         الرجاء اختيار المحافظة
+        </span>
+         
+        <ion-item class="form-group">
           <ion-label position="floating">المنطقة / الحارة</ion-label>
-          <ion-input [(ngModel)]="area" type="text"></ion-input>
+          <ion-input  class="form-control" 
+          name="areaName" #areaName="ngModel" id="areaName"
+           [(ngModel)]="area" type="text"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item class="form-group">
           <ion-label position="floating">العمر</ion-label>
-          <ion-input [(ngModel)]="age" type="number"></ion-input>
+          <ion-input class="form-control" 
+          name="personAge" maxlength="2" pattern="[0-9]+" #personAge="ngModel" id="personAge"
+           [(ngModel)]="age" type="number"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item class="form-group">
           <ion-label position="floating">حالة المريض</ion-label>
-          <ion-select [(ngModel)]="status" placeholder="درجة الخطورة">
+          <ion-select class="form-control" 
+          name="personStatus"  #personStatus="ngModel" id="personStatus"
+            [(ngModel)]="status" placeholder="درجة الخطورة">
             <ion-select-option value="critical">حرجة</ion-select-option>
             <ion-select-option value="normal">اعراض وصعوبة تنفس</ion-select-option>
-            <ion-select-option value="normal">لا يوجد اعراض</ion-select-option>
+            <ion-select-option value="zero">لا يوجد اعراض</ion-select-option>
           </ion-select>
-        </ion-item>
-        
-      </ion-list>
-      <ion-grid>
-        <ion-row class="ion-align-items-center">
-          <ion-col class="ion-text-center">
-            <ion-button ion-button primary (click)="send()" >ارسال</ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+        </ion-item> 
+
+        <ion-grid>
+          <ion-row class="ion-align-items-center">
+            <ion-col class="ion-text-center">
+              <ion-button ion-button primary [disabled]="!tosend.valid" type="submit" >ارسال</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+
+
+
+      
     </ion-card-content>
   </ion-card>
   <ion-grid>
     <ion-row class="ion-align-items-center">
       <ion-col class="ion-text-center">
-  <ion-button ion-button primary href="/tabs/tab3" >لائحة الاسطوانات المتوفر</ion-button>
-       </ion-col>
+        <ion-button ion-button primary href="/tabs/tab3">لائحة الاسطوانات المتوفر</ion-button>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

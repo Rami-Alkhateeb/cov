@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ToastController } from '@ionic/angular';
+import { ToastController, NavController } from '@ionic/angular';
+import { ListsPage } from '../lists/lists.page';
 
 
 @Component({
@@ -8,21 +9,32 @@ import { ToastController } from '@ionic/angular';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit{
 
-  phone : string ;
-  city : string;
-  area : string ;
-  age : number;
-  status : string;
-
+  phone: string;
+  city: string;
+  area: string;
+  age: number;
+  status: string;
+  
+  isSubmitted = false
 
   constructor(
     public httpClient: HttpClient,
-    public toastController: ToastController) { }
+    public toastController: ToastController,
+    
+  ) {
+
+  }
+  ngOnInit() {
+    
+  }
+
+ 
 
   async presentToast() {
     const toast = await this.toastController.create({
+      position: 'middle',
       message: 'Your settings have been saved.',
       duration: 2000
     });
@@ -30,13 +42,15 @@ export class Tab1Page {
   }
 
   send() {
+    //this.presentToast()
+    let result = false
 
     let data = {
-      phone : this.phone,
-      age : this.age,
-      city : this.city,
-      area : this.area,
-      status : this.status
+      phone: this.phone,
+      age: this.age,
+      city: this.city,
+      area: this.area,
+      status: this.status
     }
     console.log("data")
     console.log(data)
@@ -47,16 +61,29 @@ export class Tab1Page {
 
     const postRequestOptions = {
       headers: new HttpHeaders({
-          'Content-Type':'application/json' ,
-          "Accept": 'application/json'
-        }),
-        withCredentials: false
+        'Content-Type': 'application/json',
+        "Accept": 'application/json'
+      }),
+      withCredentials: false
+    }
+
+    if (result) {
+      this.presentToast()
+      this.phone = "",
+        this.age = 0,
+        this.city = "",
+        this.area = "",
+        this.status = ""
     }
 
     this.httpClient.post("https://peat-occipital-headphones.glitch.me/postreq", data, postRequestOptions)
       .subscribe(data => {
         console.log(data['_body']);
-       }, error => {
+        result = true
+        
+      
+          
+      }, error => {
         console.log(error);
       });
 
