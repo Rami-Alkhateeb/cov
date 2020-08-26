@@ -6,14 +6,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" [scrollEvents]="true">
+<ion-content [fullscreen]="true" >
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">الرئيسية</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-card>
+  <!-- <ion-card>
     <ion-card-header>
       <ion-card-subtitle></ion-card-subtitle>
       <ion-card-title>تطبيق لمعرفة ارقام واماكن توافر اسطوانات الاوكسجين في سوريا</ion-card-title>
@@ -80,7 +80,33 @@
         </ion-row>
       </ion-grid>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 
-
+  
+      <ion-card>
+        <img src="assets/img/log.png" />
+        <ion-card-header>
+          <ion-card-title>هارموني .. حيث الفن هو اللغة المحكية</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+         ملتقى ثقافي تأسس في الشهر الخامس من العام 2019 يقع في مدينة حمص - سوريا
+         يتألف من اربعة اقسام : الرسم والنحت والمكتبة ومكان الاستراحة
+         يهدف لتنمية مواهب الشباب المحلي
+        </ion-card-content>
+      </ion-card>
+   
+      <ion-list *ngFor="let item of results.About">
+        <ion-item>
+          <ion-card>
+            <img src={{item.src}} />
+            <ion-card-header>
+              <ion-card-title>{{item.Title}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+            {{item.Text}}
+            </ion-card-content>
+          </ion-card>
+          </ion-item>
+          
+          </ion-list>
 </ion-content>

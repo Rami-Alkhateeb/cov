@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CovServiceService } from '../cov-service.service';
 
 @Component({
   selector: 'app-tab3',
@@ -9,11 +8,11 @@ import { CovServiceService } from '../cov-service.service';
 })
 export class Tab3Page implements OnInit {
 
-  results
+  
   term = '';
-  citiesMap 
-  displayedresults:any[];
-  constructor(public httpClient: HttpClient , private ssservice : CovServiceService) { }
+   
+  displayedresults;
+  constructor(public httpClient: HttpClient ) { }
 
 
   ngOnInit() {
@@ -21,34 +20,40 @@ export class Tab3Page implements OnInit {
 
       withCredentials: false
     }
-    this.results = []
+    this.displayedresults = []
 
-    this.httpClient.get("https://peat-occipital-headphones.glitch.me/responses", requestOptions)
-      .subscribe(data => {
-        console.log(data);
-        this.results = data
+    //#region comments
+    // this.httpClient.get("https://peat-occipital-headphones.glitch.me/responses", requestOptions)
+    //   .subscribe(data => {
+    //     console.log(data);
+    //     this.results = data
 
 
-        var country = new Set(this.results.map(item => item.City));
-        this.displayedresults = [];
-        this.citiesMap = this.ssservice.CitiesMap
-        country.forEach(getCountry =>
-          this.displayedresults.push({
-            city_name: this.citiesMap.get(getCountry),
-            values: this.results.filter(i => i.City === getCountry)
-          }
-          ))
+    //     var country = new Set(this.results.map(item => item.City));
+    //     this.displayedresults = [];
+    //     this.citiesMap = this.ssservice.CitiesMap
+    //     country.forEach(getCountry =>
+    //       this.displayedresults.push({
+    //         city_name: this.citiesMap.get(getCountry),
+    //         values: this.results.filter(i => i.City === getCountry)
+    //       }
+    //       ))
 
-      }, error => {
-        console.log(error);
-      });
+    //   }, error => {
+    //     console.log(error);
+    //   });
+    //#endregion
+    this.httpClient.get("assets/data.json").subscribe(data =>{
+      
+      this.displayedresults = data;
+      
+    
+    // this.dataSource = new MatTableDataSource(this.users);
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
+    })
   }
 
-  getCityName(city : string){
-    this.citiesMap = this.ssservice.CitiesMap
 
-    return this.citiesMap.get(city)
-
-  }
 
 }

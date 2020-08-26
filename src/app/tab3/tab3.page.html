@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>لائحة الاسطوانات المتوفرة</ion-title>
+    <ion-title> لائحة الكتب المتوفرة</ion-title>
     <!-- <ion-select [(ngModel)]="city" placeholder="اختر محافظتك">
       <ion-select-option value="RDamascus">ريف دمشق</ion-select-option>
     </ion-select> -->
@@ -8,46 +8,38 @@
 </ion-header>
 
 <ion-content >
-  <ion-searchbar placeholder="ابحث عن مدينتك او حارتك" [(ngModel)]="term" animated="true"></ion-searchbar>
+  <ion-searchbar placeholder="ابحث عن الكتاب او المؤلف او القسم" [(ngModel)]="term" animated="true"></ion-searchbar>
 
   <ion-grid>
     <ion-row >
-      <ion-col class="ion-text-center">
-        المدينة
+      <ion-col size="5" class="ion-text-center">
+        <b>الكتاب</b>
       </ion-col>
       <ion-col size="4" class="ion-text-center">
-        الحارة
+       <b>المؤلف</b> 
       </ion-col>
-      <ion-col size="4" class="ion-text-center">
-        رقم الموبايل
+      <ion-col  class="ion-text-center">
+        <b>القسم</b>
       </ion-col>
-      <ion-col class="ion-text-center">
-        السعر
-      </ion-col>
-      
     </ion-row>
     
     <ion-row *ngFor="let item of displayedresults | filter:term" >
-      <ion-col class="ion-text-center">
-        <p >
-          {{item.city_name}}
-        </p>
+      <ion-col size="5" class="ion-text-center">
+        
+          {{item.Name}}
+        
       </ion-col>
       <ion-col size="4" class="ion-text-center">
-        <p *ngFor="let value of item.values">
-          {{value.Area}}
-        </p>
-      </ion-col>
-      <ion-col size="4" class="ion-text-center">
-        <p *ngFor="let value of item.values">
-          {{value.Number}}
-        </p>
+        
+          {{item.Author}}
+        
       </ion-col>
       <ion-col  class="ion-text-center">
-        <p *ngFor="let value of item.values">
-          {{value.Count}}
-        </p>
+        
+          {{item.Section}}
+        
       </ion-col>
+      
     </ion-row>
     <ion-row class="ion-align-items-center">
       <ion-col class="ion-text-center">

@@ -11,13 +11,8 @@ import { ListsPage } from '../lists/lists.page';
 })
 export class Tab1Page implements OnInit{
 
-  phone: string;
-  city: string;
-  area: string;
-  age: number;
-  status: string;
+  results
   
-  isSubmitted = false
 
   constructor(
     public httpClient: HttpClient,
@@ -27,7 +22,12 @@ export class Tab1Page implements OnInit{
 
   }
   ngOnInit() {
-    
+    this.results = []
+    this.httpClient.get("assets/members.json").subscribe(data =>{
+      
+      this.results = data;
+      
+    })
   }
 
  
@@ -41,55 +41,7 @@ export class Tab1Page implements OnInit{
     toast.present();
   }
 
-  send() {
-    //this.presentToast()
-    let result = false
-
-    let data = {
-      phone: this.phone,
-      age: this.age,
-      city: this.city,
-      area: this.area,
-      status: this.status
-    }
-    console.log("data")
-    console.log(data)
-    const requestOptions = {
-
-      withCredentials: false
-    }
-
-    const postRequestOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        "Accept": 'application/json'
-      }),
-      withCredentials: false
-    }
-
-    if (result) {
-      this.presentToast()
-      this.phone = "",
-        this.age = 0,
-        this.city = "",
-        this.area = "",
-        this.status = ""
-    }
-
-    this.httpClient.post("https://peat-occipital-headphones.glitch.me/postreq", data, postRequestOptions)
-      .subscribe(data => {
-        console.log(data['_body']);
-        result = true
-        
-      
-          
-      }, error => {
-        console.log(error);
-      });
-
-
-
-  }
+  
 
 
 }
