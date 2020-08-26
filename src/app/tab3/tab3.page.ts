@@ -34,7 +34,7 @@ export class Tab3Page implements OnInit {
   async presentLoading() {
     const loading = await this.loadingController.create({
       message: 'الرجاء الانتظار ..',
-      duration: 1000
+      duration: 1500
     });
     await loading.present();
 
