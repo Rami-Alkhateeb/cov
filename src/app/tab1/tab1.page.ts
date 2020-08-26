@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastController, NavController } from '@ionic/angular';
 import { ListsPage } from '../lists/lists.page';
+import data from '../../assets/members.json'
 
 
 @Component({
@@ -11,35 +12,26 @@ import { ListsPage } from '../lists/lists.page';
 })
 export class Tab1Page implements OnInit{
 
-  results
+  
+  results:{src : string , Name : string , desc : string }[] = [] ;
   
 
   constructor(
-    public httpClient: HttpClient,
-    public toastController: ToastController,
-    
   ) {
 
   }
   ngOnInit() {
-    this.results = []
-    this.httpClient.get("assets/members.json").subscribe(data =>{
+    this.results = data
+
+    // this.results = []
+    // this.httpClient.get("assets/members.json").subscribe(data =>{
       
-      this.results = data;
+    //   this.results = data;
       
-    })
+    // })
   }
 
  
-
-  async presentToast() {
-    const toast = await this.toastController.create({
-      position: 'middle',
-      message: 'Your settings have been saved.',
-      duration: 2000
-    });
-    toast.present();
-  }
 
   
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import data from '../../assets/dataaa.json'
 
 @Component({
   selector: 'app-tab3',
@@ -11,16 +11,13 @@ export class Tab3Page implements OnInit {
   
   term = '';
    
-  displayedresults;
-  constructor(public httpClient: HttpClient ) { }
+  displayedresults:{Name : string , Author : string , Section : string }[] = [] ;
+  constructor( ) { }
 
 
   ngOnInit() {
-    const requestOptions = {
-
-      withCredentials: false
-    }
-    this.displayedresults = []
+    
+    this.displayedresults = data
 
     //#region comments
     // this.httpClient.get("https://peat-occipital-headphones.glitch.me/responses", requestOptions)
@@ -43,17 +40,18 @@ export class Tab3Page implements OnInit {
     //     console.log(error);
     //   });
     //#endregion
-    this.httpClient.get("assets/data.json").subscribe(data =>{
+    
+  //   this.httpClient.get("assets/data.json").subscribe(data =>{
       
-      this.displayedresults = data;
+  //     this.displayedresults = data;
       
     
-    // this.dataSource = new MatTableDataSource(this.users);
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
-    })
+  //   // this.dataSource = new MatTableDataSource(this.users);
+  //   // this.dataSource.paginator = this.paginator;
+  //   // this.dataSource.sort = this.sort;
+  //   })
+  // }
+
+
   }
-
-
-
 }
