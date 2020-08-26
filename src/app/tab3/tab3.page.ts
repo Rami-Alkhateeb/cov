@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import jsondata from '../../assets/data.json'
+//import jsondata from '../../assets/data.json'
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { LoadingController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-tab3',
@@ -11,36 +13,43 @@ import { Observable } from 'rxjs';
 export class Tab3Page implements OnInit {
 
 
-  loaded = false
   term = '';
   data
-  //displayedresults:{Name : string , Author : string , Section : string }[] = data ;
-  constructor(
+  constructor (
     private httpClient: HttpClient,
-  ) {
-    this.loaded = false
-    // console.log("con")
-    // httpClient.get('/assets/data.json').toPromise().then(data => {
-    // console.log(data);
-    // this.data = data
-    // });
-    this.data = jsondata
+    public loadingController: LoadingController
+  ) 
+  {    
+    this.presentLoading()
   }
 
 
   ngOnInit() {
 
-    //this.displayedresults =[]
-    
-    console.log("ng");
+    this.getJson()
+
+  }
 
 
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'الرجاء الانتظار ..',
+      duration: 1000
+    });
+    await loading.present();
+
+  }
+
+  delay(ms: number) { // <------ Change
+    return new Promise(resolve => setTimeout(() => resolve(), ms)).then(() => console.log("fired")); // <------ Change
+  }
+
+  async getJson() {
+    await this.delay(2000)
     let post: Observable<any> = this.httpClient.get<any>('/assets/dataaa.json');
     post.subscribe(post => {
       this.data = post;
-      this.loaded = true
     });
-
   }
 
 

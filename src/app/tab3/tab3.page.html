@@ -1,9 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title> لائحة الكتب المتوفرة</ion-title>
-    <!-- <ion-select [(ngModel)]="city" placeholder="اختر محافظتك">
-      <ion-select-option value="RDamascus">ريف دمشق</ion-select-option>
-    </ion-select> -->
+    
   </ion-toolbar>
 </ion-header>
 
@@ -41,18 +39,8 @@
       </ion-col>
       
     </ion-row>
-    <ion-row class="ion-align-items-center">
-      <ion-col class="ion-text-center">
-        <p *ngIf="loaded ;else loading"></p>
-      </ion-col>
-    </ion-row>
+    
   </ion-grid>
 
-  <!-- <ion-button ion-button primary href="/">الرئيسية</ion-button> -->
-
-  <ng-template #loading>
-		<div text-center>
-			<ion-spinner></ion-spinner>
-		</div>
-	</ng-template>
+  
 </ion-content>
