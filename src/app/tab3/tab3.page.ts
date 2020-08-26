@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import data from '../../assets/dataaa.json'
+import jsondata from '../../assets/data.json'
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tab3',
@@ -8,50 +10,41 @@ import data from '../../assets/dataaa.json'
 })
 export class Tab3Page implements OnInit {
 
-  
+
+  loaded = false
   term = '';
-   
-  displayedresults:{Name : string , Author : string , Section : string }[] = [] ;
-  constructor( ) { }
+  data
+  //displayedresults:{Name : string , Author : string , Section : string }[] = data ;
+  constructor(
+    private httpClient: HttpClient,
+  ) {
+    this.loaded = false
+    // console.log("con")
+    // httpClient.get('/assets/data.json').toPromise().then(data => {
+    // console.log(data);
+    // this.data = data
+    // });
+    this.data = jsondata
+  }
 
 
   ngOnInit() {
+
+    //this.displayedresults =[]
     
-    this.displayedresults = data
-
-    //#region comments
-    // this.httpClient.get("https://peat-occipital-headphones.glitch.me/responses", requestOptions)
-    //   .subscribe(data => {
-    //     console.log(data);
-    //     this.results = data
+    console.log("ng");
 
 
-    //     var country = new Set(this.results.map(item => item.City));
-    //     this.displayedresults = [];
-    //     this.citiesMap = this.ssservice.CitiesMap
-    //     country.forEach(getCountry =>
-    //       this.displayedresults.push({
-    //         city_name: this.citiesMap.get(getCountry),
-    //         values: this.results.filter(i => i.City === getCountry)
-    //       }
-    //       ))
-
-    //   }, error => {
-    //     console.log(error);
-    //   });
-    //#endregion
-    
-  //   this.httpClient.get("assets/data.json").subscribe(data =>{
-      
-  //     this.displayedresults = data;
-      
-    
-  //   // this.dataSource = new MatTableDataSource(this.users);
-  //   // this.dataSource.paginator = this.paginator;
-  //   // this.dataSource.sort = this.sort;
-  //   })
-  // }
-
+    // let post: Observable<any> = this.httpClient.get<any>('/assets/dataaa.json');
+    // post.subscribe(post => {
+    //   this.data = post;
+    //   this.loaded = true
+    // });
 
   }
+
+
+
+
 }
+

@@ -23,7 +23,7 @@
       </ion-col>
     </ion-row>
     
-    <ion-row *ngFor="let item of displayedresults | filter:term" >
+    <ion-row *ngFor="let item of data | filter:term" >
       <ion-col size="5" class="ion-text-center">
         
           {{item.Name}}
@@ -43,7 +43,7 @@
     </ion-row>
     <ion-row class="ion-align-items-center">
       <ion-col class="ion-text-center">
-        <p *ngIf="data ;else loading"></p>
+        <p *ngIf="loaded ;else loading"></p>
       </ion-col>
     </ion-row>
   </ion-grid>

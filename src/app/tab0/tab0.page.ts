@@ -6,17 +6,22 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: 'tab0.page.html',
   styleUrls: ['tab0.page.scss']
 })
-export class Tab0Page implements OnInit{
+export class Tab0Page implements OnInit {
 
   results
-  constructor(public httpClient: HttpClient) {}
+  constructor(
+    public httpClient: HttpClient,
+   ) { }
+
   ngOnInit(): void {
     this.results = []
-    this.httpClient.get("assets/ar.json").subscribe(data =>{
-      
+    this.httpClient.get("assets/ar.json").subscribe(data => {
+
       this.results = data;
-      
+
     })
-    }
+  }
+
+
 
 }
