@@ -35,11 +35,11 @@ export class Tab3Page implements OnInit {
     console.log("ng");
 
 
-    // let post: Observable<any> = this.httpClient.get<any>('/assets/dataaa.json');
-    // post.subscribe(post => {
-    //   this.data = post;
-    //   this.loaded = true
-    // });
+    let post: Observable<any> = this.httpClient.get<any>('/assets/dataaa.json');
+    post.subscribe(post => {
+      this.data = post;
+      this.loaded = true
+    });
 
   }
 
